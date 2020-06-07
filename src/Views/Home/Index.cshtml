@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Sample Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sample Map</h1>
+    <div id="mapContainer" style="height:400px"></div>
+</div>
+
+@section Scripts
+{
+    <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+    <script>
+        mapkit.init({
+            authorizationCallback: function(done) {
+                fetch("/api/mapkit/gettoken")
+                    .then(res => res.text())
+                    .then(done);
+            },
+            language: "en"
+        });
+
+        var map = new mapkit.Map('mapContainer');
+
+        // Create a balloon marker for Apple Park
+        var appleParkCoordinates = new mapkit.Coordinate(37.28808, -122.01982);
+        var annotation = new mapkit.MarkerAnnotation(appleParkCoordinates,
+            {
+                title: 'Apple Park'
+            });
+        map.addAnnotation(annotation);
+
+        // Center and fit map on the annotation
+        map.showItems([annotation],
+            {
+                padding: new mapkit.Padding(100, 100, 100, 100)
+            });
+    </script>
+}
