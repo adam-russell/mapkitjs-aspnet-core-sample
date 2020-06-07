@@ -1,2 +1,4 @@
 # mapkitjs-aspnet-core-sample
-Example code implementing MapKit JS with an ASP.NET Core site.
+Sample ASP.NET Core 3.1 application that implements MapKit JS, including a JWT token generation.  Note that the sample code will not work correct as-is -- you'll want to provide your own PrivateKey, KeyIdentifier, TeamID, and Origin in appsettings.json/appsettings.Development.json under the MapKitSettings section.  The first three of those values will come from your own Apple Developer account.
+
+There's also a post on this sample that goes into more detail at [https://www.adamrussell.com/mapkit-js-with-asp-net-core/](https://www.adamrussell.com/mapkit-js-with-asp-net-core/).
